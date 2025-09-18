@@ -1,0 +1,4 @@
+/home/benjamin/dlesymanalysis/scripts/calc_annual_averages.py:14: FutureWarning: In a future version of xarray decode_timedelta will default to False rather than None. To silence this warning, set decode_timedelta to True, False, or a 'CFTimedeltaCoder' instance.
+  ocean_ds = xr.open_zarr(run_args.ocean_store)
+/home/benjamin/dlesymanalysis/scripts/calc_annual_averages.py:15: FutureWarning: In a future version of xarray decode_timedelta will default to False rather than None. To silence this warning, set decode_timedelta to True, False, or a 'CFTimedeltaCoder' instance.
+  atmos_ds = xr.open_zarr(run_args.atmos_store)
