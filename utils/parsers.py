@@ -24,6 +24,29 @@ CALC_AVGS_PARSER_ARGS = {
     },
 }
 
+SPATIAL_LIN_REGRESS_PARSER_ARGS = {
+    "ocean-store": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to the DLESyM ocean output."
+    },
+    "atmos-store": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to the DLESyM atmos output."
+    },
+    "ocean-output": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where to save the ocean averages."
+    },
+    "atmos-output": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where to save the atmos averages."
+    },
+}
+
 
 def get_arg_parser(description: str, args_dict: dict) -> ArgumentParser:
     arg_parser = ArgumentParser(description=description)
@@ -41,6 +64,12 @@ def get_calc_avgs_parser() -> ArgumentParser:
     return get_arg_parser(
         description="Calculate the global annual averages.",
         args_dict=CALC_AVGS_PARSER_ARGS,
+    )
+
+def get_spatial_lin_regress_parser() -> ArgumentParser:
+    return get_arg_parser(
+        description="Calculate drift for each spatial location.",
+        args_dict=SPATIAL_LIN_REGRESS_PARSER_ARGS,
     )
 
 
