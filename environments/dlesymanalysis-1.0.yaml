@@ -96,6 +96,7 @@ dependencies:
   - requests=2.32.5=py312h06a4308_0
   - requests-oauthlib=2.0.0=py312h06a4308_0
   - rsa=4.7.2=pyhd3eb1b0_1
+  - scipy=1.16.1=py312ha592af2_0
   - setuptools=78.1.1=py312h06a4308_0
   - six=1.17.0=py312h06a4308_0
   - sqlite=3.50.2=hb25bd0a_1
