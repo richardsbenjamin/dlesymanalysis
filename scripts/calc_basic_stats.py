@@ -28,7 +28,7 @@ def get_stats(ds: Dataset, qs: list[float] = QUANTILES) -> Dataset:
     quantiles = ds_array.quantile(q=qs, dim=reduce_dims)
     for q in qs:
         stats[f"q{int(q*100)}"] = quantiles.sel(quantile=q)
-    return
+    return stats
 
 def run_stats_calc(run_args: Namespace) -> None:
     ocean_ds = xr.open_zarr(run_args.ocean_store)
