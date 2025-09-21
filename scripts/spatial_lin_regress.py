@@ -29,7 +29,10 @@ def run_spatial_lin_regress(run_args: Namespace) -> None:
     def calc_trend(y, time_in_years):
         if np.isnan(y).all():
             return np.nan
-        slope, _, _, _, _ = linregress(time_in_years, y)
+        try:
+            slope, _, _, _, _ = linregress(time_in_years, y)
+        except:
+            return np.nan
         return slope
     
     ocean_time_in_years = ocean_ds.step.dt.year + ocean_ds.step.dt.dayofyear / 365.25
