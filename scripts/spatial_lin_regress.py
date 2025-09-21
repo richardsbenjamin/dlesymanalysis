@@ -48,7 +48,7 @@ def run_spatial_lin_regress(run_args: Namespace) -> None:
         output_dtypes=[float]
     )
     ocean_trend_slope_computed = ocean_trend_slope.compute()
-    ocean_trend_slope_computed.to_zarr(run_args.ocean_output)
+    ocean_trend_slope_computed.to_zarr(run_args.ocean_output, mode="w")
 
     atmos_trend_slope = xr.apply_ufunc(
         lambda x: calc_trend(x, atmos_time_in_years),           
@@ -60,7 +60,7 @@ def run_spatial_lin_regress(run_args: Namespace) -> None:
         output_dtypes=[float]
     )
     atmos_trend_slope_computed = atmos_trend_slope.compute()
-    atmos_trend_slope_computed.to_zarr(run_args.atmos_output)
+    atmos_trend_slope_computed.to_zarr(run_args.atmos_output, mode="w")
 
 
 if __name__ == "__main__":
