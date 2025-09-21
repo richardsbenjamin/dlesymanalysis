@@ -28,7 +28,7 @@ def get_stats(ds: Dataset, qs: list[float] = QUANTILES) -> Dataset:
     quantiles = ds_array.quantile(q=qs, dim=reduce_dims)
     for q in qs:
         stats[f"q{int(q*100)}"] = quantiles.sel(quantile=q)
-    return stats
+    return stats.compute()
 
 def run_stats_calc(run_args: Namespace) -> None:
     ocean_ds = xr.open_zarr(run_args.ocean_store)
@@ -40,8 +40,8 @@ def run_stats_calc(run_args: Namespace) -> None:
     ocean_stats = get_stats(ocean_ds)
     atmos_stats = get_stats(atmos_ds)
 
-    ocean_stats.to_zarr(run_args.atmos_output)
-    atmos_stats.to_zarr(run_args.ocean_output)
+    ocean_stats.to_zarr(run_args.ocean_output)
+    atmos_stats.to_zarr(run_args.atmos_output)
 
 if __name__ == "__main__":
     run_args = get_stats_calc_parse_args()
