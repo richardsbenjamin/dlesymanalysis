@@ -40,8 +40,8 @@ def run_stats_calc(run_args: Namespace) -> None:
     ocean_stats = get_stats(ocean_ds)
     atmos_stats = get_stats(atmos_ds)
 
-    ocean_stats.to_zarr(run_args.ocean_output)
-    atmos_stats.to_zarr(run_args.atmos_output)
+    ocean_stats.to_zarr(run_args.ocean_output, mode="w")
+    atmos_stats.to_zarr(run_args.atmos_output, mode="w")
 
 if __name__ == "__main__":
     run_args = get_stats_calc_parse_args()

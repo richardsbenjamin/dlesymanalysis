@@ -51,6 +51,12 @@ def get_calc_avgs_parser() -> Namespace:
         args_dict=BASIC_PARSER_ARGS,
     )
 
+def get_calc_percentiles_parser() -> Namespace:
+    return get_arg_parser(
+        description="Calculate the percentiels for each location for each data of year.",
+        args_dict=BASIC_PARSER_ARGS,
+    )
+
 def get_spatial_lin_regress_parser() -> Namespace:
     return get_arg_parser(
         description="Calculate drift for each spatial location.",
