@@ -1,6 +1,7 @@
 from argparse import Namespace
 from typing import TYPE_CHECKING
 
+from numpy import ndarray
 from xarray import Dataset
 
 

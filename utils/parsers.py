@@ -31,6 +31,28 @@ BASIC_PARSER_ARGS = {
     },
 }
 
+FIG_VAR_DISTS_ARGS = {
+    "ocean-store": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to the DLESyM ocean output."
+    },
+    "atmos-store": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to the DLESyM atmos output."
+    },
+    "singles-path": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where to get the ERA5 single levels."
+    },
+    "fig-save-path": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where to save the figure."
+    },
+}
 
 
 def get_arg_parser(description: str, args_dict: dict) -> Namespace:
@@ -53,7 +75,13 @@ def get_calc_avgs_parser() -> Namespace:
 
 def get_calc_percentiles_parser() -> Namespace:
     return get_arg_parser(
-        description="Calculate the percentiels for each location for each data of year.",
+        description="Calculate the percentiles for each location for each data of year.",
+        args_dict=BASIC_PARSER_ARGS,
+    )
+
+def get_fig_var_dists_parser() -> Namespace:
+    return get_arg_parser(
+        description="Generate figure of histograms of first and last decades.",
         args_dict=BASIC_PARSER_ARGS,
     )
 

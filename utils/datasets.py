@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import xarray as xr
 from netCDF4 import num2date
 from pandas import to_datetime
 
@@ -28,3 +29,11 @@ def get_preprocessed(dataset: Dataset, type_: str) -> Dataset:
     dataset = get_dataset_with_dates(dataset)
     dataset = dataset.chunk(CHUNKS[type_])
     return dataset
+
+def read_edh(edh_path: str) -> Dataset:
+    return xr.open_dataset(
+        edh_path,
+        storage_options={"client_kwargs":{"trust_env":True}},
+        chunks={"time": 1},
+        engine="zarr",
+    )
