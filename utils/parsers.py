@@ -84,13 +84,13 @@ def get_arg_parser(description: str, args_dict: dict) -> Namespace:
 def get_calc_avgs_parser() -> Namespace:
     return get_arg_parser(
         description="Calculate the global annual averages.",
-        args_dict=CALC_EXTREME_DAYS_ARGS,
+        args_dict=BASIC_PARSER_ARGS,
     )
 
 def get_calc_extreme_days_parser_args() -> Namespace:
     return get_arg_parser(
         description="Calculate the number extreme days for all variables and locations",
-        args_dict=BASIC_PARSER_ARGS,
+        args_dict=CALC_EXTREME_DAYS_ARGS,
     )
 
 def get_calc_percentiles_parser() -> Namespace:
