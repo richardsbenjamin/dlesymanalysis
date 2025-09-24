@@ -16,8 +16,8 @@ def get_quantiles(dataset: Dataset) -> Dataset:
     return quantiles
 
 def calc_percentiles(run_args: Namespace) -> None:
-    ocean_ds = get_preprocessed(xr.open_zarr(run_args.ocean_store))
-    atmos_ds = get_preprocessed(xr.open_zarr(run_args.atmos_store))
+    ocean_ds = get_preprocessed(xr.open_zarr(run_args.ocean_store), "ocean")
+    atmos_ds = get_preprocessed(xr.open_zarr(run_args.atmos_store), "atmos")
 
     ocean_quantiles = get_quantiles(ocean_ds)
     atmos_quantiles = get_quantiles(atmos_ds)

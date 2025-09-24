@@ -90,7 +90,7 @@ def get_fig_var_dists(run_args: Namespace) -> None:
     fig.savefig("./var_hists.png")
 
     fs = gcsfs.GCSFileSystem()
-    with fs.open(f"{run_args.fig_save_path}/var_hists.png", "wb") as f:
+    with fs.open(run_args.fig_save_path, "wb") as f:
         fig.savefig(f, format="png")
 
 

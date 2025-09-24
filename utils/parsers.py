@@ -31,6 +31,20 @@ BASIC_PARSER_ARGS = {
     },
 }
 
+CALC_EXTREME_DAYS_ARGS = {
+    **BASIC_PARSER_ARGS,
+    "ocean-quantiles-path": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where the ocean quantiles are saved."
+    },
+    "atmos-quantiles-path": {
+        "type": str,
+        "required": True,
+        "help": "Zarr path to where the atmos quantiles are saved."
+    },
+}
+
 FIG_VAR_DISTS_ARGS = {
     "ocean-store": {
         "type": str,
@@ -70,6 +84,12 @@ def get_arg_parser(description: str, args_dict: dict) -> Namespace:
 def get_calc_avgs_parser() -> Namespace:
     return get_arg_parser(
         description="Calculate the global annual averages.",
+        args_dict=CALC_EXTREME_DAYS_ARGS,
+    )
+
+def get_calc_extreme_days_parser_args() -> Namespace:
+    return get_arg_parser(
+        description="Calculate the number extreme days for all variables and locations",
         args_dict=BASIC_PARSER_ARGS,
     )
 
