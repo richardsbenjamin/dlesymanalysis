@@ -87,7 +87,7 @@ def get_fig_var_dists(run_args: Namespace) -> None:
     plot_var_dists(axes[1], t2m_decade1, t2m_decade2, era5_t2m_flat - 273.75, "t2m")
     plot_var_dists(axes[2], np.abs(ws10_decade1), np.abs(ws10_decade2), era5_ws_flat, "ws")
 
-    fig.savefig("var_hists.png")
+    fig.savefig("./var_hists.png")
 
     fs = gcsfs.GCSFileSystem()
     with fs.open(f"{run_args.fig_save_path}/var_hists.png", "wb") as f:
