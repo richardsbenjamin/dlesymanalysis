@@ -82,7 +82,7 @@ def get_calc_percentiles_parser() -> Namespace:
 def get_fig_var_dists_parser() -> Namespace:
     return get_arg_parser(
         description="Generate figure of histograms of first and last decades.",
-        args_dict=BASIC_PARSER_ARGS,
+        args_dict=FIG_VAR_DISTS_ARGS,
     )
 
 def get_spatial_lin_regress_parser() -> Namespace:

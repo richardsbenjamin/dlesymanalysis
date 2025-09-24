@@ -58,8 +58,8 @@ def get_fig_var_dists(run_args: Namespace) -> None:
     ocean_ds = xr.open_zarr(run_args.ocean_store)
     atmos_ds = xr.open_zarr(run_args.atmos_store)
 
-    ocean_ds = get_preprocessed(ocean_ds)
-    atmos_ds = get_preprocessed(atmos_ds)
+    ocean_ds = get_preprocessed(ocean_ds, "ocean")
+    atmos_ds = get_preprocessed(atmos_ds, "atmos")
 
     sst_decade1, sst_decade2 = get_first_last_decade(ocean_ds, "sst")
     t2m_decade1, t2m_decade2 = get_first_last_decade(atmos_ds, "t2m0")
