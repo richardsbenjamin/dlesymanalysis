@@ -13,12 +13,15 @@ def detect_extreme_days(
         quantiles: Dataset,
         predictions: Dataset,
     ) -> Dataset:
-    threshold = quantiles
-    dayofyear = predictions.step.dt.dayofyear
-    local_threshold = threshold.sel(dayofyear=dayofyear)
-    extreme_days = predictions > local_threshold
-    extreme_days_per_year = extreme_days.resample(time='YE').sum()
-    return extreme_days_per_year.compute()
+
+    def compare_with_threshold(pred_group):
+        dayofyear_val = pred_group.step.dt.dayofyear.values[0]
+        threshold_val = quantiles.sel(dayofyear=dayofyear_val)
+        return pred_group > threshold_val
+
+    extreme_days = predictions.groupby('step.dayofyear').map(compare_with_threshold)
+    extreme_days_per_year = extreme_days.resample(step='YE').sum()
+    return extreme_days_per_year
 
 def calc_extreme_days(run_args: Namespace) -> None:
     ocean_ds = get_preprocessed(xr.open_zarr(run_args.ocean_store), "ocean")

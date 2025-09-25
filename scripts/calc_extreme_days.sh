@@ -9,8 +9,8 @@ OUTPUT_DIR="${MODULE_DIR}/outputs"
 GBUCKET="gs://dlesym-storage"
 OCEAN_STORE="${GBUCKET}/ocean_prediction_scaled.zarr"
 ATMOS_STORE="${GBUCKET}/atmos_prediction_scaled.zarr"
-OCEAN_QUANTILES_PATH="${GBUCKET}/ocean_quantiles.zarr"
-ATMOS_QUANTILES_PATH="${GBUCKET}/atmos_quantiles.zarr"
+OCEAN_PERCENTILES_PATH="${GBUCKET}/ocean_percentiles.zarr"
+ATMOS_PERCENTILES_PATH="${GBUCKET}/atmos_percentiles.zarr"
 
 # Output paths
 OUTPUT_FILE="${OUTPUT_DIR}/calc_extreme_days.out" # Path to catch errors and logs
@@ -32,8 +32,8 @@ RUN_CMD="python scripts/calc_extreme_days.py \
     --atmos-store ${ATMOS_STORE} \
     --ocean-output ${OCEAN_PATH} \
     --atmos-output ${ATMOS_PATH} \
-    --ocean-quantiles-path ${OCEAN_QUANTILES_PATH} \
-    --atmos-quantiles-path ${ATMOS_QUANTILES_PATH}"
+    --ocean-quantiles-path ${OCEAN_PERCENTILES_PATH} \
+    --atmos-quantiles-path ${ATMOS_PERCENTILES_PATH}"
 
 # If output file is given, redirect output
 if [[ -n "${OUTPUT_FILE}" ]]; then
